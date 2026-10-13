@@ -68,6 +68,11 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv(
 )
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
+    "pool_pre_ping": True,
+    "pool_recycle": 300,
+    "pool_timeout": 30,
+}
 
 
 # ---------------------------------------------------------
