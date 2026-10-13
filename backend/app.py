@@ -41,7 +41,7 @@ CORS(
         r"/api/*": {
             # Allow localhost and private-LAN hosts so a caregiver can
             # open the Vite app from another device on the same network.
-            "origins": [r"^https?://(localhost|127\.0\.0\.1|192\.168\.\d{1,3}\.\d{1,3}|10\.\d{1,3}\.\d{1,3}\.\d{1,3}|172\.(1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3})(:\d+)?$"],
+            "origins": ["https://elder-sense.vercel.app", r"^https?://(localhost|127\.0\.0\.1|192\.168\.\d{1,3}\.\d{1,3}|10\.\d{1,3}\.\d{1,3}\.\d{1,3}|172\.(1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3})(:\d+)?$"],
             "methods": [
                 "GET",
                 "POST",
