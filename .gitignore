@@ -1,0 +1,61 @@
+
+
+# Environment variables and secrets
+
+.env
+.env.*
+!.env.example
+
+# Python
+
+**pycache**/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+.python-version
+
+# Frontend dependencies
+
+node_modules/
+
+# Build outputs
+
+dist/
+build/
+
+# Local logs
+
+*.log
+npm-debug.log*
+
+# IDE and operating system files
+
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Test and coverage artifacts
+
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local database backups and dumps
+
+*.sql
+*.dump
+*.backup
+
+# Local SQLite databases
+
+instance/*.db
+*.sqlite
+*.sqlite3
+
+# Local backups and source archives
+*.backup_*
+*.zip
+Elder-Sense-source-*.txt
