@@ -182,9 +182,5 @@ with app.app_context():
     ensure_compatibility_columns()
 
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
-        ensure_compatibility_columns()
-
     start_medication_scheduler(app)
     app.run(host="0.0.0.0", debug=False, port=5000)
