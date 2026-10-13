@@ -990,12 +990,21 @@ def get_pharmacy_locations():
     if pincode and (not pincode.isdigit() or len(pincode) != 6):
         return jsonify({"success": False, "error": "Pincode must contain 6 digits."}), 400
 
-    query = Pharmacy.query
-    if city:
-        query = query.filter(Pharmacy.city.ilike(city))
-    if pincode:
-        query = query.filter(Pharmacy.pincode == pincode)
-    local_rows = query.order_by(Pharmacy.name.asc()).all()
+    local_rows = []
+    try:
+        query = Pharmacy.query
+        if city:
+            query = query.filter(Pharmacy.city.ilike(city))
+        if pincode:
+            query = query.filter(Pharmacy.pincode == pincode)
+        local_rows = query.order_by(Pharmacy.name.asc()).all()
+    except Exception as exc:
+        print(f"Local pharmacy database lookup failed: {type(exc).__name__}: {exc}")
+        try:
+            Pharmacy.query.session.rollback()
+        except Exception as rollback_exc:
+            print(f"Pharmacy database rollback failed: {rollback_exc}")
+        local_rows = []
 
     results = []
     # Ignore known placeholder seed records and obviously fake phone numbers.
