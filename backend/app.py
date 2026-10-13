@@ -177,7 +177,7 @@ def ensure_compatibility_columns():
     db.session.commit()
 
 
-if __name__ == "__main__":
+with app.app_context():`r`n    db.create_all()`r`n    ensure_compatibility_columns()`r`n`r`nif __name__ == "__main__":
     with app.app_context():
         db.create_all()
         ensure_compatibility_columns()
