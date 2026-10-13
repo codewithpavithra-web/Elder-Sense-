@@ -1046,7 +1046,7 @@ def get_pharmacy_locations():
             "stock_note": (f"Inventory record from {inventory.data_source or 'Elder Sense database'} updated {inventory.updated_at.isoformat() if inventory.updated_at else 'at an unknown time'}; call the pharmacy to reconfirm." if inventory else "Pharmacy location found; medicine stock is not confirmed."),
         })
 
-    if not results:
+    if not results and os.getenv("ENABLE_OSM_PHARMACY_LOOKUP", "false").strip().lower() in {"1", "true", "yes"}:
         results = _osm_pharmacies(city, pincode or None)
         if medicine_name:
             # OSM is a location directory, not a medicine stock source.
